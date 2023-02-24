@@ -37,7 +37,7 @@ let conn =
         },
         ssl: true,
       })
-    : new Sequelize("pf_cloth", DB_USER, DB_PASSWORD, {
+    : new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
         host: DB_HOST,
         dialect: "postgres",
         logging: false, // set to console.log to see the raw SQL queries
