@@ -55,7 +55,7 @@ server.use((req, res, next) => {
 server.get("/", (req, res, next) => {
   //console.log(req.session);
   //console.log(req.sessionID);
-  res.send("hello world");
+  res.send(process.env.FRONTEND);
 });
 
 //Ruta que dirige a la pestaña de mercadopago para pagar
