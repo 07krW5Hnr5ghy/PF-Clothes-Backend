@@ -27,7 +27,7 @@ server.use(bodyParser.json({ limit: "50mb" }));
 server.use(cookieParser());
 console.log(process.env.FRONTEND);
 server.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://spring-bud-giraffe-fez.cyclic.app"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Origin", "https://express-test-liard.vercel.app"); // update to match the domain you will make the request from
   res.header("Access-Control-Allow-Credentials", "true");
   res.header(
     "Access-Control-Allow-Headers",
