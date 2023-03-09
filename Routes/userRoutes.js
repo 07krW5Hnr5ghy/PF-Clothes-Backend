@@ -108,9 +108,11 @@ router.post("/", async (req, res) => {
           } else {
             console.log("Email sent: " + info.response);
           }
-        });
+        }).then(
+          res.send("Usuario creado")
+        );
 
-        res.send("Usuario creado");
+        
       }
     } catch (error) {
       throw Error(error.message);
