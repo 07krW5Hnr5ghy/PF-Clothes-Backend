@@ -90,6 +90,8 @@ router.post("/", async (req, res) => {
           },
         });
 
+        console.log("email :",process.env.EMAIL);
+        console.log("pass: ",process.env.EMAIL_PASSWORD);
         const mailOptions = {
           from: process.env.EMAIL,
           to: user.mail,
