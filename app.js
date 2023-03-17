@@ -8,11 +8,10 @@ const passport = require("passport");
 const mercadopago = require("mercadopago");
 const { payment, merchant_orders } = require("mercadopago");
 
-require("dotenv").config();
-
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 
+require("dotenv").config();
 require("./Auth/verify-token");
 require("./Auth/GoogleSSO");
 
@@ -20,8 +19,9 @@ const server = express();
 
 server.name = "API";
 
-server.use(morgan("dev"));
 
+// middleware
+server.use(morgan("dev"));
 server.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 server.use(bodyParser.json({ limit: "50mb" }));
 server.use(cookieParser());
@@ -40,6 +40,8 @@ server.use((req, res, next) => {
   next();
 });
 
+const api = process.env.API_URL;
+
 /*server.use(
   session({
     secret: process.env.SECRET,
@@ -52,7 +54,7 @@ server.use((req, res, next) => {
   })
 );*/
 
-server.get("/", (req, res, next) => {
+server.get(`${api}/`, (req, res, next) => {
   //console.log(req.session);
   //console.log(req.sessionID);
   res.send(process.env.FRONTEND);
@@ -132,4 +134,7 @@ server.use(logger);
 // Error catching endware.
 server.use(errorHandler);
 
-module.exports = server;
+module.exports = {
+  server,
+  api
+};
