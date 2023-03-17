@@ -1,6 +1,6 @@
 import { DataTypes, sequelize } from 'sequelize';
 
-const account = sequelize.define("account",{
+const account = sequelize.define("accounts",{
     id:{
         type:DataTypes.UUID,
         default:DataTypes.UUIDV4,
@@ -35,3 +35,5 @@ const account = sequelize.define("account",{
         unique:true,
     }
 });
+
+export default account;
