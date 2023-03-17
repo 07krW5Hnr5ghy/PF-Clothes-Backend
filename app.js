@@ -19,8 +19,9 @@ const server = express();
 
 server.name = "API";
 
-server.use(morgan("dev"));
 
+// middleware
+server.use(morgan("dev"));
 server.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 server.use(bodyParser.json({ limit: "50mb" }));
 server.use(cookieParser());
@@ -53,7 +54,7 @@ const api = process.env.API_URL;
   })
 );*/
 
-server.get("/", (req, res, next) => {
+server.get(`${api}/`, (req, res, next) => {
   //console.log(req.session);
   //console.log(req.sessionID);
   res.send(process.env.FRONTEND);

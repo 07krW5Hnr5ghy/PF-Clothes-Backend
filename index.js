@@ -5,7 +5,7 @@ const {api} = require("./app");
 
 const db = conn;
 
-db.sync({ force: false }).then(() => {
+db.sync({ force: true }).then(() => {
   server.listen(process.env.PORT, async () => {
     console.log(api);
     try {
