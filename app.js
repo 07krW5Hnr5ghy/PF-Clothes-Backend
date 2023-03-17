@@ -8,11 +8,10 @@ const passport = require("passport");
 const mercadopago = require("mercadopago");
 const { payment, merchant_orders } = require("mercadopago");
 
-require("dotenv").config();
-
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 
+require("dotenv").config();
 require("./Auth/verify-token");
 require("./Auth/GoogleSSO");
 
@@ -39,6 +38,8 @@ server.use((req, res, next) => {
   );
   next();
 });
+
+const api = process.env.API_URL;
 
 /*server.use(
   session({
@@ -132,4 +133,7 @@ server.use(logger);
 // Error catching endware.
 server.use(errorHandler);
 
-module.exports = server;
+module.exports = {
+  server,
+  api
+};

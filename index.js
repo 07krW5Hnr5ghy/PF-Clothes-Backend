@@ -1,11 +1,13 @@
-const server = require("./app");
+const {server} = require("./app");
 const { conn, profilesCreator } = require("./DataBase/db");
 require("dotenv").config();
+const {api} = require("./app");
 
 const db = conn;
 
 db.sync({ force: false }).then(() => {
   server.listen(process.env.PORT, async () => {
+    console.log(api);
     try {
       //await profilesCreator();
       db.authenticate().then(() => console.log("database connected"));
